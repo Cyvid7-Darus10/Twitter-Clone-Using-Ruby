@@ -1,0 +1,47 @@
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark p-2 px-lg-5">
+        <div class="container-fluid">
+            <%= link_to "awesomeblog", root_path, class:"navbar-brand ms-4" %>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse w-100" id="navbarCollapse">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <%= link_to "Home", root_path, class:"nav-link" %>
+                    </li>
+                    <li class="nav-item">
+                        <%= link_to "About", about_path, class:"nav-link" %>
+                    </li>
+                    <li class="nav-item">
+                        <%= link_to "Contact", contact_path, class:"nav-link" %>
+                    </li>
+                    <% if !logged_in? %>
+                        <li class="nav-item">
+                            <%= link_to "Sign up", signup_path, class:"nav-link" %>
+                        </li>
+                        <li class="nav-item">
+                            <%= link_to "Log in", login_path, class:"nav-link" %>
+                        </li>
+                    <% else %>
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" id="navbar-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                User
+                            </a>
+
+                            <ul class="dropdown-menu" aria-labelledby="navbar-dropdown">
+                                <%= link_to "Profile", "#", class:"dropdown-item" %>
+                                <%= link_to "Edit Profile", edit_user_path(current_user), class:"dropdown-item" %>
+                                <%= link_to "Users", users_path, class:"dropdown-item" %>
+                                <div class="dropdown-divider"></div>
+                                <%= link_to "Logout", logout_path, class:"dropdown-item" %>
+                            </ul>
+                        </li>
+                    <% end %>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+

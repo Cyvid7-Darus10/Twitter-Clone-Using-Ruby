@@ -1,0 +1,24 @@
+version: '3'
+services:
+  db:
+    image: mysql:5.7
+    ports:
+      - "4406:3306"
+    restart: always
+    environment:
+      - MYSQL_DATABASE=awesomeblog_db
+      - MYSQL_ROOT_PASSWORD=password
+    volumes:
+      - ./data:/var/lib/mysql:rw
+    command: --innodb_use_native_aio=0
+  web:
+    build: .
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    volumes:
+      - .:/awesomeblog
+    ports:
+      - "3002:3000"
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db

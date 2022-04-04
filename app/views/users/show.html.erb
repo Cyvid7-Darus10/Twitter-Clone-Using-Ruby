@@ -1,0 +1,24 @@
+<% provide(:title, @user.name) %>
+<div class="row p-5">
+    <div class="col-12 col-lg-4">
+        <div class="card">
+            <div class="card-header">
+                User Information
+            </div>
+            <div class="card-body">
+                <%= profile_image(@user) %>
+                <h5><%= @user.name %></h5>
+                <p><%= @user.email %></p>
+            </div>
+         </div>
+    </div>
+    <div class="col-12 col-lg-8">
+        <div class="card">
+            <div class="card-header">
+                Acitivity Feeds
+            </div>
+            <div class="card-body">
+            </div>
+        </div>
+    </div>
+</div>
