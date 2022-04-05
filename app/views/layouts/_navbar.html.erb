@@ -30,7 +30,7 @@
                             </a>
 
                             <ul class="dropdown-menu" aria-labelledby="navbar-dropdown">
-                                <%= link_to "Profile", "#", class:"dropdown-item" %>
+                                <%= link_to "Profile", current_user, class:"dropdown-item" %>
                                 <%= link_to "Edit Profile", edit_user_path(current_user), class:"dropdown-item" %>
                                 <%= link_to "Users", users_path, class:"dropdown-item" %>
                                 <div class="dropdown-divider"></div>
