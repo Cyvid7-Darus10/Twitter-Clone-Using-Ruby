@@ -1,6 +1,13 @@
 <div class="p-5 m-4 mx-5 bg-light rounded-3">
-    <div class="container-fluid py-5">
-        <h1>Awesomeblog</h1>
-        <p>Welcome to awesomeblog!</p>
+    <div class="container-fluid py-5 text-center">
+        <% if logged_in? %>
+            <p class="display-5">Interact and learn</p>
+            <hr>
+            <p class="h3">Check other users and connect with them.</p>
+        <% else %>
+            <p class="display-5">Sign in to see what's happening now.</p>
+            <hr>
+            <p class="h3">A project made using Ruby on Rails</p>
+        <% end %>
     </div>
 </div>
