@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Awesomeblog</title>
+    <title>Click Connect</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,13 +11,9 @@
 
   <body>
     <%= render "layouts/navbar" %>
-    <% if flash.any? %>
-      <% flash.each do |type, msg| %>
-        <div class="alert alert-<%= type %>">
-          <%= msg %>
-        </div>
-      <% end %>
-    <% end %>
-    <%= yield %>
+    <div class="mt-3">
+      <%= render "shared/flash_messages" %>
+      <%= yield %>
+    </div>
   </body>
 </html>

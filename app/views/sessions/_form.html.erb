@@ -1,17 +1,14 @@
 <% provide(:title, 'Login') %>
-<div class="row">
-    <div class="col-4 mx-auto">
-        <%= render "error_messages" %>
-        <h1 class="text-center mt-4">Login</h1>
-        <%= form_with(url: sessions_path, scope: :session, local: true) do |f| %>
-            <div class="mb-3">
-                <%= f.email_field :email, class: "form-control", placeholder: "Email" %>
-            </div>
+<div class="col-4 mx-auto">
+    <h1 class="text-center mt-4">Login</h1>
+    <%= form_with(url: sessions_path, scope: :session, local: true) do |f| %>
+        <div class="mb-3">
+            <%= f.email_field :email, class: "form-control", placeholder: "Email" %>
+        </div>
 
-            <div class="mb-3">
-                <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
-            </div>
-            <%= f.submit "Login", class: "btn btn-primary w-100" %>
-        <% end %>
-    </div>
+        <div class="mb-3">
+            <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
+        </div>
+        <%= f.submit "Login", class: "btn btn-primary w-100" %>
+    <% end %>
 </div>
