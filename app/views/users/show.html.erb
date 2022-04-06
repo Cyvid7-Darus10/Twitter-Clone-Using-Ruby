@@ -1,18 +1,38 @@
 <% provide(:title, @user.name) %>
-<div class="row p-5">
-    <div class="col-12 col-lg-4">
+<div class="row px-5 m-0">
+    <div class="col-lg-4">
         <div class="card">
             <div class="card-header">
                 User Information
             </div>
-            <div class="card-body">
+            <div class="card-body text-center">
                 <%= profile_image(@user) %>
-                <h5><%= @user.name %></h5>
+                <h3><%= @user.name %></h3>
                 <p><%= @user.email %></p>
+                <hr>
+                <div class="row">
+                    <div class="col-4">
+                        <h1 class="text-primary">32</h1>
+                        <p>microposts</p>
+                    </div>
+                    <div class="col-4">
+                        <h1>5</h1>
+                        <p>following</p>
+                    </div>
+                    <div class="col-4">
+                        <h1>5</h1>
+                        <p>followers</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="mb-3 w-100">
+                    <textarea class="form-control" rows="3" placeholder="Share your thoughts..."></textarea>
+                </div>
             </div>
          </div>
     </div>
-    <div class="col-12 col-lg-8">
+    <div class="col-lg-8">
         <div class="card">
             <div class="card-header">
                 Acitivity Feeds
