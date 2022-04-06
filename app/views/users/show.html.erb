@@ -2,11 +2,11 @@
 <div class="row px-5 m-0">
     <div class="col-lg-4">
         <div class="card">
-            <div class="card-header">
-                User Information
-            </div>
+
             <div class="card-body text-center">
-                <%= profile_image(@user) %>
+                <div class="col-4 mx-auto">
+                    <%= profile_image(@user) %>
+                </div>
                 <h3><%= @user.name %></h3>
                 <p><%= @user.email %></p>
                 <hr>
@@ -26,18 +26,91 @@
                 </div>
             </div>
             <div class="card-footer">
-                <div class="mb-3 w-100">
-                    <textarea class="form-control" rows="3" placeholder="Share your thoughts..."></textarea>
-                </div>
+                <%= form_with(model: @post, local: true) do |f| %>
+                    <%= f.text_area :content, placeholder: "Share your thoughts...", class: "form-control my-2" %>
+                    <%= f.submit "Post", class: "btn btn-primary fw-bolder mb-2 w-100" %>
+                <% end %>
             </div>
          </div>
     </div>
     <div class="col-lg-8">
-        <div class="card">
-            <div class="card-header">
-                Acitivity Feeds
+        <h2 class="fw-bolder mt-3 mt-lg-0">Feed</h2>
+        <hr>
+        <div class="row" style="overflow-y: auto; height: 75vh">
+            <div class="col-12 my-2 py-2 bg-white rounded">
+                <div class="row">
+                    <div class="col-2">
+                        <%= profile_image(@user)%>
+                    </div>
+                    <div class="col-10">
+                        <button type="button" class="btn-close float-end" aria-label="Close"></button>
+                        <h3><%= @user.name %></h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, quos, quisquam.
+                            Quisquam, quos, quisquam.
+                        </p>
+                        <strong>Posted 23 minutes ago</strong>
+                    </div>
+                </div>
             </div>
-            <div class="card-body">
+            <div class="col-12 my-2 py-2 bg-white rounded">
+                <div class="row">
+                    <div class="col-2">
+                        <%= profile_image(@user)%>
+                    </div>
+                    <div class="col-10">
+                        <button type="button" class="btn-close float-end" aria-label="Close"></button>
+                        <h3><%= @user.name %></h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, quos, quisquam.
+                            Quisquam, quos, quisquam.
+                        </p>
+                        <strong>Posted 23 minutes ago</strong>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 my-2 py-2 bg-white rounded">
+                <div class="row">
+                    <div class="col-2">
+                        <%= profile_image(@user)%>
+                    </div>
+                    <div class="col-10">
+                        <button type="button" class="btn-close float-end" aria-label="Close"></button>
+                        <h3><%= @user.name %></h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, quos, quisquam.
+                            Quisquam, quos, quisquam.
+                        </p>
+                        <strong>Posted 23 minutes ago</strong>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 my-2 py-2 bg-white rounded">
+                <div class="row">
+                    <div class="col-2">
+                        <%= profile_image(@user)%>
+                    </div>
+                    <div class="col-10">
+                        <button type="button" class="btn-close float-end" aria-label="Close"></button>
+                        <h3><%= @user.name %></h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, quos, quisquam.
+                            Quisquam, quos, quisquam.
+                        </p>
+                        <strong>Posted 23 minutes ago</strong>
+                    </div>
+                </div>
+            </div>
+             <div class="col-12 my-2 py-2 bg-white rounded">
+                <div class="row">
+                    <div class="col-2">
+                        <%= profile_image(@user)%>
+                    </div>
+                    <div class="col-10">
+                        <button type="button" class="btn-close float-end" aria-label="Close"></button>
+                        <h3><%= @user.name %></h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, quos, quisquam.
+                            Quisquam, quos, quisquam.
+                        </p>
+                        <strong>Posted 23 minutes ago</strong>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
