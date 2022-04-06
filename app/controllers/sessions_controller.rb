@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
       flash[:success] = "Welcome back, #{user.name}!"
       redirect_to root_path
     else
-      flash[:error] = "Invalid email or password."
+      flash[:danger] = "Invalid email or password."
       redirect_to login_url
     end
   end
