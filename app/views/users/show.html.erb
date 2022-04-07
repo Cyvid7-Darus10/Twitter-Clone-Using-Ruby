@@ -1,7 +1,7 @@
 <% provide(:title, @user.name) %>
 <div class="row px-5 m-0">
     <div class="col-lg-4">
-        <div class="card">
+        <div class="card glass-background">
 
             <div class="card-body text-center">
                 <div class="col-4 mx-auto">
@@ -27,6 +27,7 @@
             </div>
             <div class="card-footer">
                 <%= form_with(model: @post, local: true) do |f| %>
+                    <%= render "shared/error_messages", object: f.object %>
                     <%= f.text_area :content, placeholder: "Share your thoughts...", class: "form-control my-2" %>
                     <%= f.submit "Post", class: "btn btn-primary fw-bolder mb-2 w-100" %>
                 <% end %>
@@ -36,82 +37,23 @@
     <div class="col-lg-8">
         <h2 class="fw-bolder mt-3 mt-lg-0">Feed</h2>
         <hr>
-        <div class="row" style="overflow-y: auto; height: 75vh">
-            <div class="col-12 my-2 py-2 bg-white rounded">
-                <div class="row">
-                    <div class="col-2">
-                        <%= profile_image(@user)%>
-                    </div>
-                    <div class="col-10">
-                        <button type="button" class="btn-close float-end" aria-label="Close"></button>
-                        <h3><%= @user.name %></h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, quos, quisquam.
-                            Quisquam, quos, quisquam.
-                        </p>
-                        <strong>Posted 23 minutes ago</strong>
-                    </div>
+        
+        <% @posts.each do |post| %>
+            <div class="d-flex align-items-center glass-background m-2 p-2 rounded">
+                <div class="flex-shrink-0">
+                    <%= profile_image(@user)%>
+                </div>
+                <div class="flex-grow-1 ms-3">
+                    <%= link_to "", post_path(post), method: :delete, data: { confirm: 'Are you sure?'}, class: "btn-close float-end" %>
+                    <h3><%= link_to post.user.name, user_path(post.user), class: "text-decoration-none" %></h3>
+                    <p class="text-break"><%= post.content %></p>
+                    <strong><%= time_ago_in_words(post.created_at) %></strong>
                 </div>
             </div>
-            <div class="col-12 my-2 py-2 bg-white rounded">
-                <div class="row">
-                    <div class="col-2">
-                        <%= profile_image(@user)%>
-                    </div>
-                    <div class="col-10">
-                        <button type="button" class="btn-close float-end" aria-label="Close"></button>
-                        <h3><%= @user.name %></h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, quos, quisquam.
-                            Quisquam, quos, quisquam.
-                        </p>
-                        <strong>Posted 23 minutes ago</strong>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 my-2 py-2 bg-white rounded">
-                <div class="row">
-                    <div class="col-2">
-                        <%= profile_image(@user)%>
-                    </div>
-                    <div class="col-10">
-                        <button type="button" class="btn-close float-end" aria-label="Close"></button>
-                        <h3><%= @user.name %></h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, quos, quisquam.
-                            Quisquam, quos, quisquam.
-                        </p>
-                        <strong>Posted 23 minutes ago</strong>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 my-2 py-2 bg-white rounded">
-                <div class="row">
-                    <div class="col-2">
-                        <%= profile_image(@user)%>
-                    </div>
-                    <div class="col-10">
-                        <button type="button" class="btn-close float-end" aria-label="Close"></button>
-                        <h3><%= @user.name %></h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, quos, quisquam.
-                            Quisquam, quos, quisquam.
-                        </p>
-                        <strong>Posted 23 minutes ago</strong>
-                    </div>
-                </div>
-            </div>
-             <div class="col-12 my-2 py-2 bg-white rounded">
-                <div class="row">
-                    <div class="col-2">
-                        <%= profile_image(@user)%>
-                    </div>
-                    <div class="col-10">
-                        <button type="button" class="btn-close float-end" aria-label="Close"></button>
-                        <h3><%= @user.name %></h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, quos, quisquam.
-                            Quisquam, quos, quisquam.
-                        </p>
-                        <strong>Posted 23 minutes ago</strong>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <% end %>
+
+        <div class="d-flex justify-content-center">
+            <%= will_paginate @posts %>
+        </div>	
     </div>
 </div>
