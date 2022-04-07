@@ -2,6 +2,10 @@ class UsersController < ApplicationController
   before_action :logged_in_user, except: [:new, :edit, :create]
   before_action :correct_user, only: :edit
 
+  def index
+    @users = User.paginate(page: params[:page], per_page: 9).order(created_at: :desc)
+  end
+
   def new
     @user = User.new
   end
@@ -31,12 +35,12 @@ class UsersController < ApplicationController
     end
   end
 
-  def index
-    @users = User.paginate(page: params[:page], per_page: 6).order(created_at: :desc)
-  end
-
   def show
     @user = User.find(params[:id])
+    @post = Post.new
+
+    # get all the posts made by user sorted by created_at
+    @posts = @user.posts.paginate(page: params[:page], per_page: 4).order(created_at: :desc)
   end
 
   private
